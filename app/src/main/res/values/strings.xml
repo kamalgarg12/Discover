@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Discover</string>
+    <string name="p2p_off_warning">wifi is off</string>
+    <string name="p2p_on_warning">wifi is on</string>
+    <string name="enable_p2p_button"> Wifi</string>
+    <string name="discover_peers_button">Peer</string>
+    <string name="security">security</string>
+    <string name="password">password</string>
+    <string name="old_password">Enter Old Password</string>
+    <string name="People">people</string>
+</resources>

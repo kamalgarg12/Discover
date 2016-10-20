@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="Add Lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_lock"
+        android:onClick="openLockMenu1"/>
+
+    <Button
+        android:text="Change Lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/change_lock"
+        android:onClick="openLockMenu1"/>
+
+    <Button
+        android:text="Remove Lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/remove_lock"
+        android:onClick="openLockMenu1"/>
+
+</LinearLayout>

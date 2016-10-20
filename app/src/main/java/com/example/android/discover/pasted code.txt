@@ -1,0 +1,82 @@
+public void displayPeers(final WifiP2pDeviceList peers) {
+
+        //Get list view
+        ListView peerView = (ListView) findViewById(R.id.peers_listview);
+
+
+        //Make array list
+        ArrayList<String> peersStringArrayList = new ArrayList<String>();
+
+
+        //Fill array list with strings of peer names
+        for (WifiP2pDevice wd : peers.getDeviceList()) {
+            peersStringArrayList.add(wd.deviceName);
+        }
+
+
+        //Set list view as clickable
+        peerView.setClickable(true);
+
+
+        //Make adapter to connect peer data to list view
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, peersStringArrayList);///////
+        //Show peer data in listview
+        peerView.setAdapter(arrayAdapter);
+
+
+        //when the items in the list is clicked
+
+
+        peerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3) {
+
+                //Get string from textview
+                TextView tv = (TextView) view;
+
+                WifiP2pDevice device = null;
+
+                //Search all known peers for matching name
+                for (WifiP2pDevice wd : peers.getDeviceList()) {
+                    if (wd.deviceName.equals(tv.getText()))
+                        device = wd;
+                }
+
+                if (device != null) {
+                    //Connect to selected peer
+                    connectToPeer(device);
+
+                } else {
+
+
+                    Toast.makeText(MainActivity.this, "Failed",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            }
+            // //TODO Auto-generated method stub
+        });
+
+
+    }
+
+
+    public void connectToPeer(final WifiP2pDevice wifiPeer) {
+        this.targetDevice = wifiPeer;
+
+        WifiP2pConfig config = new WifiP2pConfig();
+        config.deviceAddress = wifiPeer.deviceAddress;
+        manager.connect(channel, config, new WifiP2pManager.ActionListener() {
+            public void onSuccess() {
+               //open next activity
+                Toast.makeText(MainActivity.this, "connected", Toast.LENGTH_SHORT).show();
+
+            }
+
+            public void onFailure(int reason) {
+
+            }
+        });
+
+
+    }
